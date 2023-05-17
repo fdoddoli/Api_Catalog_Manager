@@ -11,6 +11,7 @@ Administrator users can have add, modify, and delete APIs from the catalog.
 # Tech Stack
 
 **Front-end:** Angular JS, CSS, HTML, Angular UI
+
 **Back-end:** SQL Server, AWS Hosting
 
 # App Demonstration
