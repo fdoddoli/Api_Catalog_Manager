@@ -27,8 +27,11 @@ https://www.youtube.com/watch?v=qg5S9TU9pH8
 
 <img width="519" alt="Screen Shot 2023-05-16 at 9 20 53 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/e4dbbe37-e7f9-49f5-9107-9ea746e0ecbb">
 
-**Add API**
+**API Page**
+
 <img width="697" alt="Screen Shot 2023-05-16 at 9 22 12 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/98700075-cd39-4853-bcb5-82ef670a3ce4">
+
+**Add API**
 
 <img width="696" alt="Screen Shot 2023-05-16 at 9 22 29 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/12550719-09e2-4f04-8897-e3866a57a2f4">
 
