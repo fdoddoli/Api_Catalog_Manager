@@ -23,6 +23,7 @@ https://www.youtube.com/watch?v=qg5S9TU9pH8
 
 <img width="635" alt="Screen Shot 2023-05-16 at 9 24 01 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/bd0e6af6-91da-4767-8d71-8c7970bfd10d">
 
+
 **Home**
 
 <img width="519" alt="Screen Shot 2023-05-16 at 9 20 53 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/e4dbbe37-e7f9-49f5-9107-9ea746e0ecbb">
@@ -31,19 +32,26 @@ https://www.youtube.com/watch?v=qg5S9TU9pH8
 
 <img width="697" alt="Screen Shot 2023-05-16 at 9 22 12 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/98700075-cd39-4853-bcb5-82ef670a3ce4">
 
+
 **Endpoint Documentation**
 
 <img width="696" alt="Screen Shot 2023-05-16 at 9 22 29 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/12550719-09e2-4f04-8897-e3866a57a2f4">
+
 
 **Endpoint Testing**
 
 <img width="697" alt="Screen Shot 2023-05-16 at 9 22 49 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/71d388a3-305b-458a-8f4c-434c36fac7be">
 
+
 **Add API**
 
 <img width="628" alt="Screen Shot 2023-05-16 at 9 23 07 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/36f4ef85-d3fb-4878-b186-3e79825d92a6">
 
+
+**Add Endpoints**
+
 <img width="687" alt="Screen Shot 2023-05-16 at 9 23 24 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/e31302c4-8e21-4909-a548-003e1f47b9f3">
+
 
 <img width="698" alt="Screen Shot 2023-05-16 at 9 23 39 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/b61082ae-662a-4399-836d-c7117f0dd776">
 
