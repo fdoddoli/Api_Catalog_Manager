@@ -1,0 +1,22 @@
+<form
+  #basicForm="ngForm"
+  autoComplete="off"
+  class="d-flex"
+  action="/"
+  method="get"
+>
+  <input
+    class="form-control user-search"
+    placeholder="¿Qué usuario buscas?"
+    aria-label="Search"
+    ngModel
+    name="search"
+    [(ngModel)]="enteredSearchValue"
+    (input)="onSearchTextChanged()"
+  />
+  <div>
+    <button type="submit" class="btn btn-search">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+</form>

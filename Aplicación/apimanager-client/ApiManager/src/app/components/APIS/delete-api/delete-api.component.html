@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container" id="box">
+    <img src="assets/images/warning.png" class="warning" />
+    <br />
+    <p style="text-align: center">¿Estás seguro que quieres borrar el API?</p>
+    <div class="buttons">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        id="cancelar"
+        (click)="closePopUp()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        id="submit"
+        (click)="deleteApi()"
+      >
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>

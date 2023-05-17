@@ -1,0 +1,47 @@
+<div>
+  <!-- CATEGORIES -->
+  <div class="category">
+    <p
+      class="category-name"
+      data-bs-toggle="collapse"
+      [attr.href]="'#' + category.name"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      {{ category.name }}
+    </p>
+    <div
+      class="collapse"
+      id="{{ category.name }}"
+      *ngFor="let endpoint of category.endpoints"
+    >
+      <div class="d-flex endpoint">
+        <p *ngIf="endpoint.method === 'GET'" class="get active">
+          {{ endpoint.method }}
+        </p>
+        <p *ngIf="endpoint.method === 'POST'" class="post active">
+          {{ endpoint.method }}
+        </p>
+        <p *ngIf="endpoint.method === 'PUT'" class="put active">
+          {{ endpoint.method }}
+        </p>
+        <p *ngIf="endpoint.method === 'DELETE'" class="delete active">
+          {{ endpoint.method }}
+        </p>
+        <a
+          class="ms-3 endpoint-name"
+          [routerLink]="
+            '/api' + '/' + id + '/' + category.name + '/' + endpoint.id
+          "
+          >{{ endpoint.name }}</a
+        >
+        <div
+          class="ms-1 bg-{{
+            availabilityColors[endpoint.is_available]
+          }} rounded-circle colorCircle"
+          style="height: 8px; width: 8px"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

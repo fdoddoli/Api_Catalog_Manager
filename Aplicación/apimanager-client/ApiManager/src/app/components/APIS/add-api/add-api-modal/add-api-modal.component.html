@@ -1,0 +1,238 @@
+<div class="wrapper">
+    <form [formGroup]="endPointsForm" (ngSubmit)="printForm(); modalSendData(endPointsForm)" class="modalMain">
+      <div class="modalHeader d-flex justify-content-between align-items-center">
+        <h1>Agregar End Point</h1>
+        <button type="button" class="btn btn-danger" (click)="modalSendState()"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modalBody">
+        <div class="addApiGeneralInfo">
+          <div>
+            <p>Nombre</p>
+            <input type="text" formControlName="name">
+          </div>
+  
+          <div>
+            <p>Descripción</p>
+            <input type="text" formControlName="description">
+          </div>
+  
+          <div>
+            <p>URL</p>
+            <input type="text" formControlName="url">
+          </div>
+  
+          <div>
+            <p>Tipo de request</p>
+            <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="method">
+              <option [ngValue]="1">GET</option>
+              <option [ngValue]="2">POST</option>
+              <option [ngValue]="3">PUT</option>
+              <option [ngValue]="4">DELETE</option>
+            </select>
+          </div>
+  
+          <div>
+            <p>Requiere Autenticación</p>
+            <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="requires_auth">
+              <option [ngValue]="true">Sí</option>
+              <option [ngValue]="false">No</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-primary mb-2 mt-2 btnModify" type="button" (click)="addQuery()">Query Parameters +</button>
+          <ng-container formArrayName="queryParameters">
+            <ng-container *ngFor="let query of query.controls; let i = index" [formGroupName]="i">
+              <div class="title d-flex gap-4">
+                <h3>Query Parameters</h3>
+                <button type="button" class="btn btn-danger" (click)="removeQuery(i)"><i class="bi bi-trash-fill"></i></button>
+              </div>
+              <div class="addApiGeneralInfo">
+                <div>
+                  <p>Nombre</p>
+                  <input type="text" formControlName="name">
+                </div>
+                <div>
+                  <p>Tipo de Dato</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="data_type">
+                    <option [ngValue]="1">STRING</option>
+                    <option [ngValue]="2">INT</option>
+                    <option [ngValue]="3">DOUBLE</option>
+                    <option [ngValue]="4">BOOLEAN</option>
+                    <option [ngValue]="5">ARRAY</option>
+                    <option [ngValue]="6">OBJECT</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Requerido</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="required">
+                    <option [ngValue]="true">Requerido</option>
+                    <option [ngValue]="false">No Requerido</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Descripción</p>
+                  <input type="text" formControlName="description">
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div>
+          <button class="btn btn-primary mb-2 mt-2 btnModify" type="button" (click)="addBody()">Body Parameters +</button>
+          <ng-container formArrayName="bodyParameters">
+            <ng-container *ngFor="let body of body.controls; let i = index" [formGroupName]="i">
+              <div class="title d-flex gap-4">
+                <h3>Body Parameters</h3>
+                <button type="button" class="btn btn-danger" (click)="removeBody(i)"><i class="bi bi-trash-fill"></i></button>
+              </div>
+              <div class="addApiGeneralInfo">
+                <div>
+                  <p>Nombre</p>
+                  <input type="text" formControlName="name">
+                </div>
+                <div>
+                  <p>Tipo de Dato</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="data_type">
+                    <option [ngValue]="1">STRING</option>
+                    <option [ngValue]="2">INT</option>
+                    <option [ngValue]="3">DOUBLE</option>
+                    <option [ngValue]="4">BOOLEAN</option>
+                    <option [ngValue]="5">ARRAY</option>
+                    <option [ngValue]="6">OBJECT</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Requerido</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="required">
+                    <option [ngValue]="true">Requerido</option>
+                    <option [ngValue]="false">No Requerido</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Descripción</p>
+                  <input type="text" formControlName="description">
+                </div>
+                <div>
+                  <p>Payload</p>
+                  <textarea cols="30" rows="10" formControlName="payload"></textarea>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div>
+          <button class="btn btn-primary mb-2 mt-2 btnModify" type="button" (click)="addPath()">Path Parameters +</button>
+          <ng-container formArrayName="pathParameters">
+            <ng-container *ngFor="let path of path.controls; let i = index" [formGroupName]="i">
+              <div class="title d-flex gap-4">
+                <h3>Path Parameters</h3>
+                <button type="button" class="btn btn-danger" (click)="removePath(i)"><i class="bi bi-trash-fill"></i></button>
+              </div>
+              <div class="addApiGeneralInfo">
+                <div>
+                  <p>Nombre</p>
+                  <input type="text" formControlName="name">
+                </div>
+                <div>
+                  <p>Tipo de Dato</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="data_type">
+                    <option [ngValue]="1">STRING</option>
+                    <option [ngValue]="2">INT</option>
+                    <option [ngValue]="3">DOUBLE</option>
+                    <option [ngValue]="4">BOOLEAN</option>
+                    <option [ngValue]="5">ARRAY</option>
+                    <option [ngValue]="6">OBJECT</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Requerido</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="required">
+                    <option [ngValue]="true">Requerido</option>
+                    <option [ngValue]="false">No Requerido</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Descripción</p>
+                  <input type="text" formControlName="description">
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div>
+          <button class="btn btn-primary mb-2 mt-2 btnModify" type="button" (click)="addHeader()">Header Parameters +</button>
+          <ng-container formArrayName="headerParameters">
+            <ng-container *ngFor="let header of headers.controls; let i = index" [formGroupName]="i">
+              <div class="title d-flex gap-4">
+                <h3>Header Parameters</h3>
+                <button type="button" class="btn btn-danger" (click)="removeHeader(i)"><i class="bi bi-trash-fill"></i></button>
+              </div>
+              <div class="addApiGeneralInfo">
+                <div>
+                  <p>Nombre</p>
+                  <input type="text" formControlName="name">
+                </div>
+                <div>
+                  <p>Tipo de Dato</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="data_type">
+                    <option [ngValue]="1">STRING</option>
+                    <option [ngValue]="2">INT</option>
+                    <option [ngValue]="3">DOUBLE</option>
+                    <option [ngValue]="4">BOOLEAN</option>
+                    <option [ngValue]="5">ARRAY</option>
+                    <option [ngValue]="6">OBJECT</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Requerido</p>
+                  <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="required">
+                    <option [ngValue]="true">Requerido</option>
+                    <option [ngValue]="false">No Requerido</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Descripción</p>
+                  <input type="text" formControlName="description">
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div>
+          <button class="btn btn-primary btnModify mt-2 mb-2" type="button" (click)="addResponse()">Responses +</button>
+          <ng-container formArrayName="responses">
+            <ng-container *ngFor="let response of responses.controls; let i = index" [formGroupName]="i">
+              <div class="title d-flex gap-4">
+                <h3>Response</h3>
+                <button type="button" class="btn btn-danger" (click)="removeResponse(i)"><i class="bi bi-trash-fill"></i></button>
+              </div>
+              <div class="addApiGeneralInfo">
+                <div>
+                  <p>Response Ejemplo</p>
+                    <textarea cols="30" rows="10" formControlName="content"></textarea>
+                    <p>Tipo de respuesta</p>
+                    <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="type">
+                      <option [ngValue]="1">200</option>
+                      <option [ngValue]="2">201</option>
+                      <option [ngValue]="3">400</option>
+                      <option [ngValue]="4">401</option>
+                      <option [ngValue]="5">403</option>
+                      <option [ngValue]="6">404</option>
+                      <option [ngValue]="7">405</option>
+                      <option [ngValue]="8">409</option>
+                      <option [ngValue]="9">500</option>
+                      <option [ngValue]="10">503</option>
+                    </select>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="modalFooter d-flex justify-content-end">
+        <button type="submit" class="btn addBtn">Agregar</button>
+      </div>
+    </form>
+  </div>
+  

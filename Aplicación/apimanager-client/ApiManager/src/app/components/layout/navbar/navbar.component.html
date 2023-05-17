@@ -1,0 +1,17 @@
+<div>
+    <!-- if user is not signed in -->
+    <div *ngIf="(getEmployeeRole() != 'admin') && (getEmployeeRole() != 'developer')">
+        <app-signed-out-links></app-signed-out-links>
+    </div>
+
+    <div *ngIf="getEmployeeRole() === 'developer'">
+        <app-signed-in-links-dev></app-signed-in-links-dev>
+    </div>
+    <!-- if user is signed and is a dev -->
+
+
+    <!-- if user is signed and is an admin  -->
+    <div *ngIf="getEmployeeRole() === 'admin'">
+        <app-signed-in-links-admin></app-signed-in-links-admin>
+    </div>
+</div>

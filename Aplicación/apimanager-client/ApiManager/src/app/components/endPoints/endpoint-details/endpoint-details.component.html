@@ -1,0 +1,39 @@
+<div *ngIf="detailedEndpoint">
+  <h2 class="endpoint-title">{{ detailedEndpoint.name }}</h2>
+  <!-- BASE URL -->
+  <div class="d-flex">
+    <p class="endpoint-type">{{ detailedEndpoint.method }}</p>
+    <p class="base-url ms-2">{{ detailedEndpoint.label }}</p>
+  </div>
+  <p class="mt-2 endpoint-description">{{ detailedEndpoint.description }}</p>
+  <div class="d-flex mt-4">
+    <button
+      [ngClass]="[content === 'definition' ? 'btn-primary' : 'btn-probar']"
+      (click)="changeContent('definition')"
+    >
+      Definicion
+    </button>
+    <button
+      [ngClass]="[
+        content === 'test'
+          ? 'btn-primary' + ' ' + 'ms-3'
+          : 'btn-probar' + ' ' + 'ms-3'
+      ]"
+      (click)="changeContent('test')"
+    >
+      Probar
+    </button>
+  </div>
+
+  <app-endpoint-definition
+    *ngIf="content === 'definition'"
+    [response]="response"
+    [detailedEndpoint]="detailedEndpoint"
+  ></app-endpoint-definition>
+  <app-endpoint-test
+    *ngIf="content === 'test'"
+    [detailedEndpoint]="detailedEndpoint"
+    [base_url]="base_url"
+    [id_endpoint]="id"
+  ></app-endpoint-test>
+</div>

@@ -1,0 +1,75 @@
+.custom-container {
+  width: 91%;
+}
+
+.btn-home {
+  color: white !important;
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 1px;
+  width: 48px;
+  height: 24px;
+  background-color: #e65624;
+  font-weight: 700;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #e3e0dd;
+}
+
+.home-top-component {
+  margin-bottom: 32px;
+}
+
+.home-mid-component {
+  margin-bottom: 16px;
+}
+
+.filters {
+  margin-top: 16px;
+}
+
+.btn-filter {
+  background-color: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  height: 32px;
+  width: 159px;
+}
+
+.btn-remove-filter {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.pagination-controller {
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.pagination-controller a {
+  color: #e65624;
+  text-decoration: none;
+  transform: scale(1.3);
+}
+
+.pagination-controller p {
+  color: black;
+}
+
+.pagination-controller a:hover {
+  cursor: pointer;
+  color: #e6aa96;
+}
+
+.delete {
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}

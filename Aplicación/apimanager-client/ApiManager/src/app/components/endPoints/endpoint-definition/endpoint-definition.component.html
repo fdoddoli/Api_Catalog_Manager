@@ -1,0 +1,181 @@
+<div>
+  <!-- AUTHENTICATION -->
+  <!-- Has Authentication -->
+  <div class="mt-5" *ngIf="detailedEndpoint.requires_auth">
+    <h4>Autenticación</h4>
+    <div class="d-flex">
+      <i class="bi bi-check-square-fill"></i>
+      <p class="ms-3 mt-1">API Key</p>
+    </div>
+  </div>
+  <!-- Does not have Authentication -->
+  <div class="mt-5" *ngIf="!detailedEndpoint.requires_auth">
+    <h4>Authentication</h4>
+    <div class="d-flex mt-2">
+      <i class="bi bi-x-square"></i>
+      <p class="ms-2">Not Required</p>
+    </div>
+  </div>
+
+  <!-- QUERY PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.queryParameters">
+    <h4>Parámetros en Query</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.queryParameters"
+    >
+      <div
+        class="d-flex mt-1"
+        tooltip="{{ parameter.description }}"
+        [options]="myOptions"
+      >
+        <p class="parameter">
+          {{ parameter.name }}
+        </p>
+        <p class="data-type">{{ parameter.data_type }}</p>
+        <p *ngIf="parameter.required" class="is-required">requerido</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.pathParameters">
+    <h4>Parámetros en Path</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.pathParameters"
+    >
+      <div
+        class="d-flex mt-1"
+        tooltip="{{ parameter.description }}"
+        [options]="myOptions"
+      >
+        <p class="parameter">{{ parameter.name }}</p>
+        <p class="data-type">{{ parameter.data_type }}</p>
+        <p *ngIf="parameter.required" class="is-required">requerido</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.bodyParameters">
+    <h4>Parámetros en Body</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.bodyParameters"
+    >
+      <div
+        class="d-flex mt-1"
+        tooltip="{{ parameter.description }}"
+        [options]="myOptions"
+      >
+        <p class="parameter">{{ parameter.name }}</p>
+        <p class="data-type">{{ parameter.data_type }}</p>
+        <p *ngIf="parameter.required" class="is-required">requerido</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.headerParameters">
+    <h4>Parámetros en Header</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.headerParameters"
+    >
+      <div
+        class="d-flex mt-1"
+        tooltip="{{ parameter.description }}"
+        [options]="myOptions"
+      >
+        <p class="parameter">{{ parameter.name }}</p>
+        <p class="data-type">{{ parameter.data_type }}</p>
+        <p *ngIf="parameter.required" class="is-required">requerido</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REQUEST EXAMPLE-->
+  <!-- <div class="mt-5">
+        <h4>Request</h4>
+        <div class="card">
+            <div class="card-header response-active">
+                Ejemplo
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{ var axios = require('axios');
+
+                    var config = {
+                        method: 'get',
+                        url: '{{base_url}}/movie/37798778,
+                        headers: { 
+                        'Authorization': {{api_key}}’
+                        }
+                    }; }}
+                </p>
+                <a href="#" class="btn btn-primary purple ver-mas">Ver Más</a>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- RESPONSE EXAMPLE -->
+    <div class="mt-5 mb-5">
+        <h4>Respuesta</h4>
+        <div class="row respone-section">
+            <div class="col-md-2">
+                <div class="response-number">
+                    <div class="ms-3 mt-3" *ngFor="let response of detailedEndpoint.responses; let i = index">
+                        <p *ngIf="response.type == 200" (click)="changeResponseIdx(i)" class="cursor"><i class="bi bi-circle-fill doscientos me-3"></i>{{response.type}}</p>
+                        <p *ngIf="response.type != 200" (click)="changeResponseIdx(i)" class="cursor"><i class="bi bi-circle-fill errorResponse me-3"></i>{{response.type}}</p>
+                        <!-- <p><i class="bi bi-circle-fill cuatrocientos me-3"></i>400</p>
+                        <p><i class="bi bi-circle-fill cuatrocientos me-3"></i>500</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header response-header">
+                        <div class="d-flex">
+                            <p class="me-3 response-active">Ejemplo</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p class="card-text">
+                                {{responseToShow}}
+                            </p>
+                            <button class="btn btn-primary purple ver-mas" data-bs-toggle="modal" data-bs-target="#responseModal">Ver Más</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- FULL RESPONSE EXAMPLE  -->
+  <div
+    class="modal fade"
+    id="responseModal"
+    tabindex="-1"
+    aria-labelledby="responseModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ejemplo de Respuesta</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ detailedEndpoint.responses[0].content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

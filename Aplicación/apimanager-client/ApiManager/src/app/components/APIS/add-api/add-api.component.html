@@ -1,0 +1,156 @@
+<div *ngIf="apiForm">
+  <div class="container-fluid custom-container position-relative">
+    <!-- Home y Divider -->
+    <div class="top-component">
+      <a href="/home" class="btn btn-home"><i class="bi bi-house-door"></i></a>
+      <div class="divider mt-3"></div>
+    </div>
+
+    <h4>Agregar API</h4>
+    <h6><strong>información General</strong></h6>
+    <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+      <label class="generalInfo">
+        <p>*Autor</p>
+        <input class="apiInput" type="text" formControlName="author" />
+        <ng-container
+          *ngIf="apiForm.get('author').invalid && apiForm.get('author').touched"
+        >
+          <p class="validationText text-danger">Autor requerido</p>
+        </ng-container>
+        <p>*Nombre del API</p>
+        <input class="apiInput" type="text" formControlName="name" />
+        <ng-container
+          *ngIf="apiForm.get('name').invalid && apiForm.get('name').touched"
+        >
+          <p class="validationText text-danger">Nombre requerido</p>
+        </ng-container>
+        <p>*URL base</p>
+        <input class="apiInput" type="text" formControlName="base_url" />
+        <ng-container
+          *ngIf="
+            apiForm.get('base_url').invalid && apiForm.get('base_url').touched
+          "
+        >
+          <p class="validationText text-danger">URL requerido</p>
+        </ng-container>
+        <p>*Descripción del API</p>
+        <textarea formControlName="description" cols="30" rows="10"></textarea>
+        <ng-container
+          *ngIf="
+            apiForm.get('description').invalid &&
+            apiForm.get('description').touched
+          "
+        >
+          <p class="validationText text-danger">Descripción requerida</p>
+        </ng-container>
+        <p>Agregar categorías</p>
+      </label>
+
+      <button
+        class="btn btn-primary addCatBtn"
+        type="button"
+        (click)="addCategory()"
+      >
+        Agregar +
+      </button>
+
+      <ng-container formArrayName="categories">
+        <ng-container
+          *ngFor="let category of categories.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="catListWrapper">
+            <label>
+              <div class="d-flex gap-4 align-items-center">
+                <input
+                  class="apiInput"
+                  type="text"
+                  placeholder="Agregar categoria"
+                  formControlName="name"
+                />
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="addModalStateManager(); getIndex(i)"
+                >
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+                <button class="btn btn-danger" (click)="removeCategory(i)">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </div>
+              <ng-container
+                *ngIf="
+                  category.get('name').invalid && category.get('name').touched
+                "
+              >
+                <p class="validationText text-danger">Nombre requerido</p>
+              </ng-container>
+
+              <ng-container formArrayName="endpoints">
+                <p id="epTitle">End Points:</p>
+                <ng-container
+                  *ngFor="
+                    let endpoint of category.get('endpoints')['controls'];
+                    let j = index
+                  "
+                  [formGroupName]="j"
+                >
+                  <div class="d-flex gap-4 align-items-center">
+                    <ul class="epBox">
+                      <li>{{ endpoint.value.name }}</li>
+                    </ul>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="getEndPointIndex(i, j); editModalStateManager()"
+                    >
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeEndPoint(j, i)"
+                    >
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </div>
+                  <ng-container
+                    *ngIf="
+                      endpoint.get('name').invalid &&
+                      endpoint.get('name').touched
+                    "
+                  >
+                    <p class="validationText text-danger">Nombre requerido</p>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </label>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div class="publishBtn">
+        <button [disabled]="apiForm.invalid" class="btn" (click)="showsToast()">
+          Publicar
+        </button>
+      </div>
+    </form>
+
+    <!-- Modal -->
+    <ng-container *ngIf="addModalState == true">
+      <app-add-api-modal
+        [modalState]="addModalState"
+        (modalOutput)="addModalStateReceiver($event)"
+        (modalDataOutput)="addModalDataReceiver($event)"
+      ></app-add-api-modal>
+    </ng-container>
+
+    <ng-container *ngIf="editModalState == true">
+      <app-edit-api-modal
+        [modalState]="editModalState"
+        [editData]="sendEditData()"
+        (modalOutput)="editModalStateReceiver($event)"
+      ></app-edit-api-modal>
+    </ng-container>
+  </div>
+</div>

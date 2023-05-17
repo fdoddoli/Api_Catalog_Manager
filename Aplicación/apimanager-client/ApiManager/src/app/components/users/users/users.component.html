@@ -1,0 +1,39 @@
+<div class="wrapper users-modal">
+  <div class="container" id="box">
+    <div class="header">
+      <h4 id="titulo">Administra los roles de los usuarios</h4>
+    </div>
+    <div class="body">
+      <!-- SEARCH -->
+      <app-user-search
+        (searchTextChanged)="onSearchTextEntered($event)"
+      ></app-user-search>
+
+      <!-- USERS LIST -->
+      <div class="users-list">
+        <app-users-list
+          (userUpdate)="updateUser($event)"
+          [searchText]="searchText"
+        >
+        </app-users-list>
+      </div>
+    </div>
+    <div class="divider mt-3"></div>
+    <div class="footer">
+      <!-- FOOTER -->
+      <div class="float-end">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cerrar
+        </button>
+        <button
+          type="button"
+          [ngClass]="updates.length > 0 ? 'btn btn-submit' : 'noDisplay'"
+          id="submit"
+          (click)="updateEmployees(updates); closeModal()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

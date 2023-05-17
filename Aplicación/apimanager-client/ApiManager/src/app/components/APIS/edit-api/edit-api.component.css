@@ -1,0 +1,105 @@
+h4 {
+  font-weight: bold;
+  padding-top: 1rem;
+}
+
+h6 {
+  padding-top: 2rem;
+  color: #325586;
+}
+
+#epTitle
+{
+  margin: 0;
+  padding: 1rem 0 0 0;
+  font-weight: bold;
+}
+
+.btn-home {
+  color: white !important;
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 1px;
+  width: 48px;
+  height: 24px;
+  background-color: #E65624;
+  font-weight: 700;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #E3E0DD;
+}
+
+.custom-container {
+  width: 91%;
+}
+
+form {
+  width: 100%;
+}
+
+label {
+  width: 100%;
+}
+
+.generalInfo p {
+  margin-top: 1rem;
+}
+
+.generalInfo textarea {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: 8px;
+  border: #d7d9d9 solid 2px;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.apiInput {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: 8px;
+  border: #d7d9d9 solid 2px;
+  padding-left: 1rem;
+  height: 2.5rem;
+}
+
+.addCatBtn {
+  width: 9rem;
+  margin: 0rem 0 2rem 0;
+}
+
+.publishBtn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0 1rem 0;
+}
+
+.publishBtn button {
+  background-color: #E040FB;
+  color: white;
+}
+
+.catListWrapper {
+  padding: 1rem 0 1rem 0;
+}
+
+
+.epBox {
+  margin: 1rem 0 1rem 0;
+  width: 100%;
+  max-width: 30rem;
+  height: 2.5rem;
+  background-color: white;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.validationText
+{
+ margin: 0;
+}

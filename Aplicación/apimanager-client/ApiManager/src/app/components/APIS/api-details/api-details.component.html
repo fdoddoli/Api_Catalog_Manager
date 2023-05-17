@@ -1,0 +1,59 @@
+<div class="container-fluid custom-container" *ngIf="detailedApi">
+  <!-- Home y Divider -->
+  <div>
+    <a href="/home" class="btn btn-home"><i class="bi bi-house-door"></i></a>
+    <div class="divider mt-3"></div>
+  </div>
+
+  <div class="row left-row">
+    <!-- SideBar -->
+    <div class="col-md-2 side-menu">
+      <div>
+        <p class="api-title mt-3 bold">
+          {{ detailedApi.name }}
+        </p>
+
+        <!-- Introduccion -->
+        <div class="category">
+          <p
+            [routerLink]="'/api' + '/' + id + '/introduccion/intro'"
+            class="category-name endpoint-name intro"
+          >
+            Introducción
+          </p>
+        </div>
+
+        <!-- Categories -->
+        <app-sidebar-categories
+          *ngFor="let category of detailedApi.categories"
+          [category]="category"
+        ></app-sidebar-categories>
+      </div>
+    </div>
+
+    <!-- Endpoint Details -->
+    <div class="col-md-9 ms-2 mt-5">
+      <!-- Introduccion -->
+      <div *ngIf="category === 'introduccion'">
+        <h2 class="endpoint-title">Introducción</h2>
+        <div>
+          <p class="bold">Descripción</p>
+          <p class="mt-2 endpoint-description">
+            {{ detailedApi.description }}
+          </p>
+        </div>
+        <div>
+          <p class="bold">URL base</p>
+          <p class="mt-2 endpoint-description">
+            {{ detailedApi.base_url }}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="category !== 'introduccion'">
+        <app-endpoint-details
+          [base_url]="detailedApi.base_url"
+        ></app-endpoint-details>
+      </div>
+    </div>
+  </div>
+</div>

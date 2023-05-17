@@ -1,0 +1,55 @@
+<div class="navbar navbar-expand-md navbar-light fixed">
+  <div class="container-fluid custom-container">
+    <!-- Toggle Botton for mobile nav -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#main-nav"
+      aria-controls="main-nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Logo -->
+    <a href="/home">
+      <img src="assets/images/logo.png" alt="" class="logo" />
+    </a>
+
+    <!-- Searchbar -->
+    <app-searchbar></app-searchbar>
+
+    <!-- Main Nav -->
+    <div
+      class="collapse navbar-collapse justify-content-end align-center"
+      id="main-nav"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item me-md-3">
+          <a (click)="openModal()" class="nav-link btn btn-usuarios-nav" data-bs-target="#responseModal">Usuarios</a>
+        </li>
+        <li class="nav-item me-md-3">
+          <a href="/add-api" class="nav-link btn btn-agregar-nav"
+            >Agregar<i class="bi bi-plus-lg"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sign Out -->
+    <div>
+      <button
+        class="btn bi-box-arrow-right btn-sign-out"
+        (click)="signOut()"
+      ></button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="modalState == true">
+  <div class="position-absolute modalZ">
+    <app-users class="users" (changeModalState)="changeModal($event)"></app-users>
+  </div>
+</div>

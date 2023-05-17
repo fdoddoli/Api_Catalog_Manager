@@ -1,0 +1,18 @@
+<div>
+  <ul class="list-group lista">
+    <div *ngFor="let user of employeeArray">
+      <div
+        *ngIf="
+          searchText === '' ||
+          user.name.toLowerCase().includes(searchText.toLocaleLowerCase()) ||
+          user.email.toLowerCase().includes(searchText.toLocaleLowerCase())
+        "
+      >
+        <app-users-summary
+          [userInfo]="user"
+          (userUpdate)="updateUser($event)"
+        ></app-users-summary>
+      </div>
+    </div>
+  </ul>
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "api_manager_server",
+  "version": "1.0.0",
+  "description": "Servidor Node para la aplicación IPS API Manager.",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon api.js"
+  },
+  "author": "TC3005B Equipo 3",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.0",
+    "morgan": "^1.10.0",
+    "mssql": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

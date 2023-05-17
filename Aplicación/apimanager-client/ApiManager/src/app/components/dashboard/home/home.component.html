@@ -1,0 +1,131 @@
+<div class="container-fluid custom-container">
+  <!-- Home y Divider -->
+  <div class="home-top-component">
+    <a href="/home" class="btn btn-home"><i class="bi bi-house-door"></i></a>
+    <div class="divider mt-3"></div>
+  </div>
+
+  <!-- Titulo y Filtros -->
+  <div class="home-mid-component">
+    <h4 class="page-title">Catalogo de APIs</h4>
+    <div class="filters d-flex">
+      <div class="dropdown">
+        <button
+          class="btn btn-filter"
+          type="button"
+          id="dropdownMenuEstatus"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ translateAVFilter() }} <i class="bi bi-chevron-down ms-2"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuEstatus">
+          <li>
+            <p
+              *ngIf="availabilityFilter != 'available'"
+              class="dropdown-item pointer"
+              (click)="setAvailabilityFilter('available')"
+            >
+              Disponible
+            </p>
+          </li>
+          <li>
+            <p
+              *ngIf="availabilityFilter != 'semi-available'"
+              class="dropdown-item pointer"
+              (click)="setAvailabilityFilter('semi-available')"
+            >
+              Semi Disponible
+            </p>
+          </li>
+          <li>
+            <p
+              *ngIf="availabilityFilter != 'unavailable'"
+              class="dropdown-item pointer"
+              (click)="setAvailabilityFilter('unavailable')"
+            >
+              No Disponible
+            </p>
+          </li>
+          <li>
+            <p
+              *ngIf="availabilityFilter != 'not-tested'"
+              class="dropdown-item pointer"
+              (click)="setAvailabilityFilter('not-tested')"
+            >
+              Sin Probar
+            </p>
+          </li>
+        </ul>
+        <button
+          class="btn btn-remove-filter bi-x-lg"
+          *ngIf="availabilityFilter"
+          (click)="setAvailabilityFilter(null)"
+        ></button>
+      </div>
+      <div class="dropdown ms-3">
+        <button
+          class="btn btn-filter"
+          type="button"
+          id="dropdownMenuSeguridad"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ translateSECFilter() }} <i class="bi bi-chevron-down ms-2"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuSeguridad">
+          <li>
+            <p
+              *ngIf="securityFilter != 'safe'"
+              class="dropdown-item pointer"
+              (click)="setSecurityFilter('safe')"
+            >
+              Seguro
+            </p>
+          </li>
+          <li>
+            <p
+              *ngIf="securityFilter != 'unsafe'"
+              class="dropdown-item pointer"
+              (click)="setSecurityFilter('unsafe')"
+            >
+              Inseguro
+            </p>
+          </li>
+        </ul>
+        <button
+          class="btn btn-remove-filter bi-x-lg"
+          *ngIf="securityFilter"
+          (click)="setSecurityFilter(null)"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de APIs -->
+  <div class="mb-5">
+    <app-api-list
+      (changePopUpState)="changePopUpValue($event)"
+      (paginationInformation)="updateTotalPages($event)"
+    ></app-api-list>
+  </div>
+</div>
+
+<!-- Paginación -->
+<div
+  class="pagination-controller d-flex container-fluid custom-container"
+  *ngIf="totalPages > 0"
+>
+  <a class="me-2" (click)="previousPage()"> &laquo; </a>
+  <p class="">Página {{ currentPage }} de {{ totalPages }}</p>
+  <a class="ms-2" (click)="nextPage()"> &raquo; </a>
+</div>
+
+<div *ngIf="popUpStateValue === true">
+  <app-delete-api
+    class="delete"
+    (changePopUpState)="changePopUpValue($event)"
+    [apiId]="deletedApiId"
+  >
+  </app-delete-api>
+</div>

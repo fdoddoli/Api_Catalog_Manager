@@ -1,0 +1,189 @@
+<div>
+
+  <!-- AUTHENTICATION -->
+  <!-- Has Authentication -->
+  <!-- <div class="mt-5" *ngIf="detailedEndpoint.requires_auth">
+      <h4>Authentication</h4>
+      <div class="path-parameters d-flex">
+          <p class="parameter mt-1">api_key</p>
+          <div class="d-flex input-field">
+              <input type="text" name="api_key" #apiKey (keyup)="setAuthentication(apiKey.value)" placeholder="string" class="input-field">
+              <p class="is-required mt-1">requerido</p>
+          </div>
+      </div>
+  </div> -->
+
+
+  <!-- QUERY PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.queryParameters">
+    <h4>Parámetros en Query</h4>
+    <div>
+      <div
+        class="path-parameters"
+        *ngFor="
+          let parameter of detailedEndpoint.queryParameters;
+          let i = index
+        "
+      >
+        <div class="d-flex">
+          <p
+            class="parameter mt-1"
+            tooltip="{{ parameter.description }}"
+            [options]="myOptions"
+          >
+            {{ parameter.name }}
+          </p>
+          <div class="d-flex input-field">
+            <input
+              type="text"
+              name="parameter.name"
+              #queryParameter
+              (keyup)="
+                setQueryParameter(queryParameter.value, parameter.name, i)
+              "
+              placeholder="{{ parameter.data_type }}"
+              class="input-field"
+            />
+            <p *ngIf="parameter.required" class="is-required mt-1">requerido</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.pathParameters">
+    <h4>Parámetros en Path</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.pathParameters; let i = index"
+    >
+      <div class="d-flex">
+        <p
+          class="parameter mt-1"
+          tooltip="{{ parameter.description }}"
+          [options]="myOptions"
+        >
+          {{ parameter.name }}
+        </p>
+        <div class="d-flex input-field">
+          <input
+            name="parameter.name"
+            #pathParameter
+            (keyup)="setPathParameter(pathParameter.value, parameter.name, i)"
+            type="text"
+            placeholder="{{ parameter.data_type }}"
+            class="input-field"
+          />
+          <p *ngIf="parameter.required" class="is-required mt-1">requerido</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.bodyParameters">
+    <h4>
+      Parámetros en Body <span class="ms-2 support-text">application/json</span>
+    </h4>
+    <div
+      class="bodyParameter"
+      *ngFor="let parameter of detailedEndpoint.bodyParameters; let i = index"
+    >
+      <div class="">
+        <p
+          class="response-active mt-3 ms-3"
+          tooltip="{{ parameter.description }}"
+          [options]="myOptions"
+        >
+          {{ parameter.name }}
+        </p>
+        <textarea
+          class="form-control text-field"
+          #bodyParameter
+          (keyup)="setBodyParameter(bodyParameter.value, parameter.name, i)"
+          >{{ detailedEndpoint.bodyParameters[0].payload }}</textarea
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER PARAMETERS -->
+  <div class="mt-5" *ngIf="detailedEndpoint.headerParameters">
+    <h4>Parámetros en Header</h4>
+    <div
+      class="path-parameters"
+      *ngFor="let parameter of detailedEndpoint.headerParameters; let i = index"
+    >
+      <div class="d-flex">
+        <p
+          class="parameter mt-1"
+          tooltip="{{ parameter.description }}"
+          [options]="myOptions"
+        >
+          {{ parameter.name }}
+        </p>
+        <div class="d-flex input-field">
+          <input
+            type="text"
+            #headerParameter
+            (keyup)="
+              setHeaderParameter(headerParameter.value, parameter.name, i)
+            "
+            placeholder="{{ parameter.data_type }}"
+            class="input-field"
+          />
+          <p *ngIf="parameter.required" class="is-required mt-1">requerido</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mandar Request Btn -->
+  <div class="mt-5">
+    <div class="d-flex">
+      <button class="btn-primary purple probar-endpoint" (click)="testAPI()">
+        Mandar Request
+      </button>
+      <p class="mt-3 ms-3">{{ test_url }}</p>
+    </div>
+    <div class="mt-3">
+      <p
+        *ngIf="
+          detailedEndpoint.last_test_result != undefined &&
+          detailedEndpoint.last_test_result
+        "
+        class="endpoint-test-recap"
+      >
+        La última prueba fue exitosa, se realizó el
+        {{ detailedEndpoint.last_test_date }}
+      </p>
+      <p
+        *ngIf="
+          detailedEndpoint.last_test_result != undefined &&
+          !detailedEndpoint.last_test_result
+        "
+        class="endpoint-test-recap"
+      >
+        La última prueba <span class="bold">no</span> fue exitosa, se realizó el
+        {{ detailedEndpoint.last_test_date }}
+      </p>
+      <p
+        *ngIf="detailedEndpoint.last_test_result == undefined"
+        class="endpoint-test-recap"
+      >
+        El endpoint aún no se prueba.
+      </p>
+    </div>
+  </div>
+
+  <!-- Response -->
+  <div class="mt-5 mb-5">
+    <h4>Respuesta</h4>
+    <div class="bodyParameter">
+      <div class="">
+        <textarea class="form-control text-field">{{ testResults }}</textarea>
+      </div>
+    </div>
+  </div>
+</div>

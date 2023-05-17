@@ -1,0 +1,49 @@
+.category{
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.endpoint{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: -8px;
+}
+
+.category-name{
+    font-weight: 400;
+}
+
+.category-name:hover{
+    font-weight: bold;
+}
+
+.active{
+    font-weight: bold;
+}
+
+.get{
+    color: #68BB59;
+}
+
+.post{
+    color: #3B5B84;
+}
+
+.delete{
+    color: #D0021B;
+}
+
+.put{
+    color: #E040FB;
+}
+
+.endpoint-name{
+    text-decoration: none;
+    color: black;
+}
+
+.endpoint{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: -8px;
+}

@@ -1,0 +1,62 @@
+.nav-black-text{
+    color: black;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: 700;
+    font-size:16px;
+}
+
+.nav-icon{
+    font-size:24px;
+    color: black;
+}
+
+.btn-usuarios-nav{
+    color: white !important;
+    font-size:10px;
+    border-radius: 16px;
+    padding:4px;
+    margin-bottom: 13px;
+    width: 72px;
+    background-color: #25AAE1;
+    font-weight: 700;
+    margin-top: 13px;
+}
+
+.btn-usuarios-nav:hover{
+    color: #25AAE1 !important;
+    border: 1px solid #25AAE1;
+    background-color: white;
+}
+
+
+.btn-agregar-nav{
+    color: white !important;
+    font-size:10px;
+    border-radius: 16px;
+    padding:4px;
+    width: 72px;
+    background-color: #E65624;
+    font-weight: 700;
+    margin-top: 13px;
+}
+
+.btn-agregar-nav:hover{
+    color: #E65624 !important;
+    border: 1px solid #E65624;
+    background-color: white;
+}
+
+.modalZ {
+    z-index: 100;
+}
+
+.btn-sign-out {
+    font-size: 24px;
+}
+
+.users{
+    position: fixed;
+    top: 0px;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}

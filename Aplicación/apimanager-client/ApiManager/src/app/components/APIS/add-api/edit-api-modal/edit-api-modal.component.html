@@ -1,0 +1,550 @@
+<div class="wrapper">
+  <form
+    [formGroup]="endPointsForm"
+    (ngSubmit)="modalSendData(endPointsForm)"
+    class="modalMain"
+  >
+    <div class="modalHeader d-flex justify-content-between align-items-center">
+      <h1>Editar End Point</h1>
+      <button type="button" class="btn btn-danger" (click)="modalSendState()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="modalBody">
+      <div class="addApiGeneralInfo">
+        <div>
+          <p>Nombre</p>
+          <input type="text" formControlName="name" />
+          <ng-container
+            *ngIf="
+              endPointsForm.get('name').invalid &&
+              endPointsForm.get('name').touched
+            "
+          >
+            <p class="validationText text-danger">Campo requerido</p>
+          </ng-container>
+        </div>
+
+        <div>
+          <p>Descripción</p>
+          <input type="text" formControlName="description" />
+          <ng-container
+            *ngIf="
+              endPointsForm.get('description').invalid &&
+              endPointsForm.get('description').touched
+            "
+          >
+            <p class="validationText text-danger">Campo requerido</p>
+          </ng-container>
+        </div>
+
+        <div>
+          <p>URL</p>
+          <input type="text" formControlName="url" />
+          <ng-container
+            *ngIf="
+              endPointsForm.get('url').invalid &&
+              endPointsForm.get('url').touched
+            "
+          >
+            <p class="validationText text-danger">Campo requerido</p>
+          </ng-container>
+        </div>
+
+        <div>
+          <p>Tipo de request</p>
+          <select
+            class="form-select mb-3"
+            aria-label=".form-select-lg example"
+            formControlName="method"
+          >
+            <option [ngValue]="1">GET</option>
+            <option [ngValue]="2">POST</option>
+            <option [ngValue]="3">PUT</option>
+            <option [ngValue]="4">DELETE</option>
+          </select>
+          <ng-container
+            *ngIf="
+              endPointsForm.get('method').invalid &&
+              endPointsForm.get('method').touched
+            "
+          >
+            <p class="validationText text-danger">Campo requerido</p>
+          </ng-container>
+        </div>
+
+        <div>
+          <p>Requiere Autenticación</p>
+          <select
+            class="form-select mb-3"
+            aria-label=".form-select-lg example"
+            formControlName="requires_auth"
+          >
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+          <ng-container
+            *ngIf="
+              endPointsForm.get('requires_auth').invalid &&
+              endPointsForm.get('requires_auth').touched
+            "
+          >
+            <p class="validationText text-danger">Campo requerido</p>
+          </ng-container>
+        </div>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary mb-2 mt-2 btnModify"
+          type="button"
+          (click)="addQuery()"
+        >
+          Query Parameters +
+        </button>
+        <ng-container formArrayName="queryParameters">
+          <ng-container
+            *ngFor="let query of query.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="title d-flex gap-4">
+              <h3>Query Parameters</h3>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removeQuery(i)"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="addApiGeneralInfo">
+              <div>
+                <p>Nombre</p>
+                <input type="text" formControlName="name" />
+                <ng-container
+                  *ngIf="query.get('name').invalid && query.get('name').touched"
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Tipo de Dato</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="data_type"
+                >
+                  <option [ngValue]="1">STRING</option>
+                  <option [ngValue]="2">INT</option>
+                  <option [ngValue]="3">DOUBLE</option>
+                  <option [ngValue]="4">BOOLEAN</option>
+                  <option [ngValue]="5">ARRAY</option>
+                  <option [ngValue]="6">OBJECT</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    query.get('data_type').invalid &&
+                    query.get('data_type').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Requerido</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="required"
+                >
+                  <option [ngValue]="true">Requerido</option>
+                  <option [ngValue]="false">No Requerido</option>
+                  <ng-container
+                    *ngIf="
+                      query.get('required').invalid &&
+                      query.get('required').touched
+                    "
+                  >
+                    <p class="validationText text-danger">Campo requerido</p>
+                  </ng-container>
+                </select>
+              </div>
+              <div>
+                <p>Descripción</p>
+                <input type="text" formControlName="description" />
+                <ng-container
+                  *ngIf="
+                    query.get('description').invalid &&
+                    query.get('description').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary mb-2 mt-2 btnModify"
+          type="button"
+          (click)="addBody()"
+        >
+          Body Parameters +
+        </button>
+        <ng-container formArrayName="bodyParameters">
+          <ng-container
+            *ngFor="let body of body.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="title d-flex gap-4">
+              <h3>Body Parameters</h3>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removeBody(i)"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="addApiGeneralInfo">
+              <div>
+                <p>Nombre</p>
+                <input type="text" formControlName="name" />
+                <ng-container
+                  *ngIf="body.get('name').invalid && body.get('name').touched"
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Tipo de Dato</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="data_type"
+                >
+                  <option [ngValue]="1">STRING</option>
+                  <option [ngValue]="2">INT</option>
+                  <option [ngValue]="3">DOUBLE</option>
+                  <option [ngValue]="4">BOOLEAN</option>
+                  <option [ngValue]="5">ARRAY</option>
+                  <option [ngValue]="6">OBJECT</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    body.get('data_type').invalid &&
+                    body.get('data_type').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Requerido</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="required"
+                >
+                  <option [ngValue]="true">Requerido</option>
+                  <option [ngValue]="false">No Requerido</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    body.get('required').invalid && body.get('required').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Descripción</p>
+                <input type="text" formControlName="description" />
+                <ng-container
+                  *ngIf="
+                    body.get('description').invalid &&
+                    body.get('description').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Payload</p>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  formControlName="payload"
+                ></textarea>
+                <ng-container
+                  *ngIf="
+                    body.get('payload').invalid && body.get('payload').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary mb-2 mt-2 btnModify"
+          type="button"
+          (click)="addPath()"
+        >
+          Path Parameters +
+        </button>
+        <ng-container formArrayName="pathParameters">
+          <ng-container
+            *ngFor="let path of path.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="title d-flex gap-4">
+              <h3>Path Parameters</h3>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removePath(i)"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="addApiGeneralInfo">
+              <div>
+                <p>Nombre</p>
+                <input type="text" formControlName="name" />
+                <ng-container
+                  *ngIf="path.get('name').invalid && path.get('name').touched"
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Tipo de Dato</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="data_type"
+                >
+                  <option [ngValue]="1">STRING</option>
+                  <option [ngValue]="2">INT</option>
+                  <option [ngValue]="3">DOUBLE</option>
+                  <option [ngValue]="4">BOOLEAN</option>
+                  <option [ngValue]="5">ARRAY</option>
+                  <option [ngValue]="6">OBJECT</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    path.get('data_type').invalid &&
+                    path.get('data_type').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Requerido</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="required"
+                >
+                  <option [ngValue]="true">Requerido</option>
+                  <option [ngValue]="false">No Requerido</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    path.get('required').invalid && path.get('required').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Descripción</p>
+                <input type="text" formControlName="description" />
+                <ng-container
+                  *ngIf="
+                    path.get('description').invalid &&
+                    path.get('description').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary mb-2 mt-2 btnModify"
+          type="button"
+          (click)="addHeader()"
+        >
+          Header Parameters +
+        </button>
+        <ng-container formArrayName="headerParameters">
+          <ng-container
+            *ngFor="let header of headers.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="title d-flex gap-4">
+              <h3>Header Parameters</h3>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removeHeader(i)"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="addApiGeneralInfo">
+              <div>
+                <p>Nombre</p>
+                <input type="text" formControlName="name" />
+                <ng-container
+                  *ngIf="
+                    header.get('name').invalid && header.get('name').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Tipo de Dato</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="data_type"
+                >
+                  <option [ngValue]="1">STRING</option>
+                  <option [ngValue]="2">INT</option>
+                  <option [ngValue]="3">DOUBLE</option>
+                  <option [ngValue]="4">BOOLEAN</option>
+                  <option [ngValue]="5">ARRAY</option>
+                  <option [ngValue]="6">OBJECT</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    header.get('data_type').invalid &&
+                    header.get('data_type').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Requerido</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="required"
+                >
+                  <option [ngValue]="true">Requerido</option>
+                  <option [ngValue]="false">No Requerido</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    header.get('required').invalid &&
+                    header.get('required').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+              <div>
+                <p>Descripción</p>
+                <input type="text" formControlName="description" />
+                <ng-container
+                  *ngIf="
+                    header.get('description').invalid &&
+                    header.get('description').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary btnModify mt-2 mb-2"
+          type="button"
+          (click)="addResponse()"
+        >
+          Responses +
+        </button>
+        <ng-container formArrayName="responses">
+          <ng-container
+            *ngFor="let response of responses.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="title d-flex gap-4">
+              <h3>Response</h3>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removeResponse(i)"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+            <div class="addApiGeneralInfo">
+              <div>
+                <p>Response Ejemplo</p>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  formControlName="content"
+                ></textarea>
+                <ng-container
+                  *ngIf="
+                    response.get('content').invalid &&
+                    response.get('content').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+                <p>Tipo de respuesta</p>
+                <select
+                  class="form-select mb-3"
+                  aria-label=".form-select-lg example"
+                  formControlName="type"
+                >
+                  <option [ngValue]="1">200</option>
+                  <option [ngValue]="2">201</option>
+                  <option [ngValue]="3">400</option>
+                  <option [ngValue]="4">401</option>
+                  <option [ngValue]="5">403</option>
+                  <option [ngValue]="6">404</option>
+                  <option [ngValue]="7">405</option>
+                  <option [ngValue]="8">409</option>
+                  <option [ngValue]="9">500</option>
+                  <option [ngValue]="10">503</option>
+                </select>
+                <ng-container
+                  *ngIf="
+                    response.get('type').invalid && response.get('type').touched
+                  "
+                >
+                  <p class="validationText text-danger">Campo requerido</p>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="modalFooter d-flex justify-content-end">
+      <button type="button" (click)="modalSendState()" class="btn addBtn">
+        Cerrar
+      </button>
+    </div>
+  </form>
+</div>

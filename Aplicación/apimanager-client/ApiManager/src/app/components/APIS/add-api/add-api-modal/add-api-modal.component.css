@@ -1,0 +1,83 @@
+.wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 0, 0, 0.20);
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInAnimation ease .3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .btnModify {
+    width: 12rem;
+  }
+  
+  
+  .addApiGeneralInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .modalMain {
+    background-color: white;
+    width: 60rem;
+    height: 40rem;
+    overflow-y: auto;
+    border-radius: 8px;
+  }
+  
+  .modalHeader {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  
+  .modalBody {
+    padding: 1rem;
+  }
+  
+  .modalFooter {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  
+  input {
+    width: 100%;
+    max-width: 30rem;
+    border-radius: 8px;
+    border: #d7d9d9 solid 2px;
+    padding-left: 1rem;
+    height: 2.35rem;
+  }
+  
+  .title
+  {
+      padding: .5rem 0 .5rem 0;
+  }
+  
+  .addBtn
+  {
+      background-color: #E040FB;
+      color: white;
+  }
+  
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+  }

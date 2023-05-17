@@ -1,0 +1,49 @@
+<div class="list-group-item list-group-item-action list-border select">
+  <li
+    class="row"
+    (mouseenter)="hoverState = true"
+    (mouseleave)="hoverState = false"
+  >
+    <div class="d-flex w-100 align-items-center">
+      <div
+        [routerLink]="'/api' + '/' + data.id + '/introduccion/intro'"
+        class="d-flex mt-2 mainInfo"
+      >
+        <div class="boxItem1">
+          <p>{{ data.name }}</p>
+        </div>
+        <div class="centerBox d-flex boxItem2">
+          <div
+            class="bg-{{
+              availabilityColors[data.availability]
+            }} rounded-circle colorCircle"
+            style="height: 16px; width: 16px"
+            tooltip="{{ tooltipMessage }}"
+            [options]="myOptions"
+          ></div>
+          <div style="height: 32px; width: 32px">
+            <i
+              class="bi bi-shield-lock-fill icon-blue"
+              *ngIf="data.is_safe"
+            ></i>
+          </div>
+
+          <p>{{ data.author }}</p>
+        </div>
+        <div class="boxItem3">
+          <p>{{ data.description.substring(0, 80) + " " + points }}</p>
+        </div>
+      </div>
+      <div
+        [ngClass]="{ hoverActive: hoverState, hoverNotActive: true }"
+        *ngIf="isAdmin()"
+      >
+        <i
+          class="btnSize bi bi-pencil-fill"
+          [routerLink]="'/edit-api' + '/' + data.id"
+        ></i>
+        <i class="btnSizeTrash bi bi-trash trashCan" (click)="openPopUp()"></i>
+      </div>
+    </div>
+  </li>
+</div>

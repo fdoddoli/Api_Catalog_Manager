@@ -1,0 +1,43 @@
+
+	#box{
+		margin: 0;
+		width: 500px;
+		height: 300px;
+        background-color: white;
+        border-radius: 8px;
+	}
+
+    .wrapper {
+        background-color: rgba(0, 0, 0, 0.279);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 21px;
+    }
+
+    .warning{
+        width: 85px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+    }
+
+    .buttons{
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #submit{
+        margin-left: 30px;
+        width: 100px
+    }
+
+    #cancelar{
+        width: 100px;
+    }

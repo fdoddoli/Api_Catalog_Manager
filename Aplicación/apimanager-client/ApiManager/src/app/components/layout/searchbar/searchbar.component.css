@@ -1,0 +1,30 @@
+.searchMobile{
+    width: 48%;
+    margin-top:4%;
+    margin-bottom: 4%;
+}
+
+.search-bar{
+    margin-left:35%;
+    width: 800px;
+}
+
+.search-bar-input{
+    height: 26px;
+    width: 124%;
+    border-radius: 16px;
+    margin-top: 4px;
+    border: none;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+}
+
+.btn-search{
+    background-color: none;
+    cursor: pointer;
+    color: black;
+}
+
+.icon-search{
+    cursor: pointer;
+}
+

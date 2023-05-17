@@ -1,0 +1,15 @@
+.nav-black-text{
+    color: black;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: 700;
+    font-size:16px;
+}
+
+.nav-icon{
+    font-size:24px;
+    color: black;
+}
+
+.btn-sign-out {
+    font-size: 24px;
+}

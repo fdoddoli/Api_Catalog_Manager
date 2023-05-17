@@ -1,0 +1,30 @@
+<div>
+  <li class="list-group-item d-flex user">
+    <div>
+        <img src="../../../../assets/images/user_profile.png" class="user-profile">
+    </div>
+    
+    <div class="usersInfo">
+      <p class="name">{{ userInfo.name }}</p>
+      <p id="correo" class="correo">{{ userInfo.email }}</p>
+    </div>
+    <div class="dropdown">
+      <select
+        class="form-select"
+        *ngIf="userInfo.is_admin"
+        (change)="updateUser($event)"
+      >
+        <option value="true" selected>Administrador</option>
+        <option value="false">Desarrollador</option>
+      </select>
+      <select
+        class="form-select"
+        *ngIf="!userInfo.is_admin"
+        (change)="updateUser($event)"
+      >
+        <option value="true">Administrador</option>
+        <option value="false" selected>Desarrollador</option>
+      </select>
+    </div>
+  </li>
+</div>

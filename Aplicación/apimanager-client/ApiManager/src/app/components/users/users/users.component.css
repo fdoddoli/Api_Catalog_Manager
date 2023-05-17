@@ -1,0 +1,96 @@
+
+	#box{
+		margin-top: 8%;
+		width: 50%;
+		height: 70%;
+        background-color: white;
+        border-radius: 8px;
+	}
+
+    .wrapper {
+        background-color: rgba(0, 0, 0, 0.279);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+    }
+
+    .header{
+        margin-top:48px;
+    }
+
+    .body{
+        margin-top:24px;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .footer{
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-top:16px;
+    }
+
+    .users-list{
+        top:24px;
+    }
+
+	#titulo{
+		text-align: center;
+	}
+
+	.img{
+		border-radius: 50%;
+		height: auto;
+		width: 10%;
+	}
+
+	.item{
+		background-color: black;
+		height: 50%
+	}
+
+    p {
+        margin-left: 10px;
+        margin-bottom: 0 !important;
+    }
+
+    #correo{
+        color: gray;
+        font-size: 10px;
+    }
+
+    .dropdown {
+        margin-left: 180px;
+    }
+
+    .usersInfo {
+        width: 170px;
+    }
+
+	.select-selected {
+        background-color: DodgerBlue;
+      }
+
+    #submit{
+        margin-left: 20px;
+    }
+
+    .btn-submit {
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        background-color: #3B5B84;
+        font-weight: 700;
+    }
+
+    .noDisplay{
+        display: none;
+    }
+
+    .divider {
+        height: 1px;
+        width: 100%;
+        background-color: #e3e0dd;
+    }
+

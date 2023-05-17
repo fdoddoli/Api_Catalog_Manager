@@ -1,0 +1,12 @@
+<ul class="list-group">
+  <div>
+    <p class="no-apis-found" *ngIf="totalPages < 1">
+      No se han encontrado resultados para tu búsqueda.
+    </p>
+    <app-api-summary
+      *ngFor="let api of apiArray"
+      [data]="api"
+      (changePopUpState)="updatePopUp($event)"
+    ></app-api-summary>
+  </div>
+</ul>
