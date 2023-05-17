@@ -19,12 +19,15 @@ https://www.youtube.com/watch?v=qg5S9TU9pH8
 
 # App Preview
 
+**Sign in**
+
 <img width="635" alt="Screen Shot 2023-05-16 at 9 24 01 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/bd0e6af6-91da-4767-8d71-8c7970bfd10d">
+
+**Home**
 
 <img width="519" alt="Screen Shot 2023-05-16 at 9 20 53 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/e4dbbe37-e7f9-49f5-9107-9ea746e0ecbb">
 
-<img width="696" alt="Screen Shot 2023-05-16 at 9 21 25 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/35665bcb-7361-433c-8565-ec1af126db9e">
-
+**Add API**
 <img width="697" alt="Screen Shot 2023-05-16 at 9 22 12 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/98700075-cd39-4853-bcb5-82ef670a3ce4">
 
 <img width="696" alt="Screen Shot 2023-05-16 at 9 22 29 PM" src="https://github.com/fdoddoli/Api_Catalog_Manager/assets/58672371/12550719-09e2-4f04-8897-e3866a57a2f4">
